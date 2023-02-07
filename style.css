@@ -1,0 +1,174 @@
+@keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    background-color: #FA8BFF;
+    background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 100%);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:rgba(66, 68, 90, 1);
+    font-size: 15pt;
+}
+.game {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.controls {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 5px 10px;
+    border: 0;
+    font-size: 15pt;
+    width: 35%;
+    background-color: #3EECAC;
+    color:rgba(66, 68, 90, 1);
+    -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+}
+         
+ 
+.disabled {
+    color: #0a0a0a;
+    background-color: #21805d;
+}
+
+.stats {
+    text-align: left;
+    width: 65%;
+    border-radius: 10px;
+    padding: 5px 10px;
+    border: 0;
+    font-size: 15pt;
+    background-color: #3EECAC;
+    -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+}
+
+.board-container {
+    position: relative;
+}
+
+.board,
+win {
+    border-radius: 5%;
+    transition: transform .6 cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backface-visibility: hidden;
+}
+
+
+.board {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 20px;
+    background-color: #3EECAC;
+    -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+}
+
+.board-container.flipped .board {
+    transform: rotateY(180deg) rotateZ(50deg);
+}
+
+.board-container.flipped .win {
+    transform: rotateY(0deg) rotateZ(0deg);
+}
+
+.card {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    border-radius: 5%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    backface-visibility: hidden;
+}
+
+.card-back {
+    font-size: 30pt;
+    line-height: 100px;
+    background: whitesmoke;
+    transform: rotateY(180deg) rotateZ(50deg);
+    user-select: none;
+}
+
+.card-front {
+    background-color: blueviolet;
+    font-size: 50pt;
+    color: wheat;
+    text-shadow: 2px 2px 2px black;
+}
+
+.card.flipped .card-front {
+    transform: rotateY(180deg) rotateZ(50deg);
+}
+
+.card.flipped .card-back {
+    transform: rotateY(0deg) rotateZ(0deg);
+}
+
+.win {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform: rotateZ(180deg) rotateY(180deg) rotateX(90deg);
+    transition: transform 0.9s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    background-color: #3EECAC;
+    z-index: -1;
+    border-radius: 5%;
+}
+
+
+.win-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #3EECAC;
+    font-size: 26pt;
+    border-radius: 5%;
+}
+
+.highlight {
+    color: tomato;
+}
+
+.matched {
+    transform: rotateX(180deg) rotateY(180deg) rotateZ(180deg);
+    transition: transform 2.5s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    animation: fade-out 1s forwards;
+    animation-delay: 1.5s;
+  }
+  
+
